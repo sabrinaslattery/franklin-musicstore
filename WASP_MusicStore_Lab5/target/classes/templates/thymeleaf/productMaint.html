@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Product Maintenance</title>
+	<link rel="stylesheet" href="styles/main.css">
+	<script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script type="text/javascript" src="productMaint.js"></script>
+</head>
+
+<body>
+	<h1>Products</h1>
+
+	<div id="vuediv">
+		<table>
+			<tr>
+				<th style="width:75px">Code</th>
+				<th style="width:500px">Description</th>
+				<th style="width:75px;text-align:right">Price</th>
+				<th></th>
+				<th></th>
+			</tr>
+			<tr v-for="p in product" :productCode="p.code">
+				<td>{{p.code}}</td>
+				<td>{{p.description}}</td>
+				<td style="text-align:right">${{p.price}}</td>
+				<td><a :href="editLink + p.code" class="editProd">Edit</a></td>
+				<td><a href="#" class="delete-product-link">Delete</a></td>
+			</tr>
+		</table>
+	</div>
+
+	<form action="editProduct" method="GET">
+		<input type="submit" value="Add Product" />
+	</form>
+
+</body>
+
+</html>
